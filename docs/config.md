@@ -4,7 +4,7 @@
 * Databases: [`DATABASE_URL`](#database_url) • [`REDIS_URL`](#redis_url) • [`REDIS_IS_SENTINEL_MODE`](#redis_is_sentinel_mode) • [`REDIS_SENTINEL_MASTER`](#redis_sentinel_master) • [`REDIS_SENTINEL_NODES`](#redis_sentinel_nodes) • [`REDIS_SENTINEL_PASSWORD`](#redis_sentinel_password)
 * Sessions:
 [`ACCESS_TOKEN_TTL`](#access_token_ttl) • [`REFRESH_TOKEN_TTL`](#refresh_token_ttl)• [`REFRESH_TOKEN_EXPLICIT_EXPIRY`](#refresh_token_explicit_expiry) • [`SESSION_KEY_SALT`](#session_key_salt) • [`DB_ENCRYPTION_KEY_SALT`](#db_encryption_key_salt) • [`RSA_PRIVATE_KEY`](#rsa_private_key) • [`SAME_SITE`](#same_site)
-* OAuth Clients: [`FACEBOOK_OAUTH_CREDENTIALS`](#facebook_oauth_credentials) • [`TWITTER_OAUTH_CREDENTIALS`](#twitter_oauth_credentials) • [`GITHUB_OAUTH_CREDENTIALS`](#github_oauth_credentials) • [`GOOGLE_OAUTH_CREDENTIALS`](#google_oauth_credentials) • [`DISCORD_OAUTH_CREDENTIALS`](#discord_oauth_credentials) • [`MICROSOFT_OAUTH_CREDENTIALS`](#microsoft_oauth_credentials)
+* OAuth Clients: [`FACEBOOK_OAUTH_CREDENTIALS`](#facebook_oauth_credentials) • [`TWITTER_OAUTH_CREDENTIALS`](#twitter_oauth_credentials) •  [`GITHUB_OAUTH_CREDENTIALS`](#github_oauth_credentials) • [`GOOGLE_OAUTH_CREDENTIALS`](#google_oauth_credentials) • [`DISCORD_OAUTH_CREDENTIALS`](#discord_oauth_credentials) • [`MICROSOFT_OAUTH_CREDENTIALS`](#microsoft_oauth_credentials)
 * Username Policy: [`USERNAME_IS_EMAIL`](#username_is_email) • [`EMAIL_USERNAME_DOMAINS`](#email_username_domains)
 * Password Policy: [`PASSWORD_POLICY_SCORE`](#password_policy_score) • [`PASSWORD_CHANGE_LOGOUT`](#password_change_logout) • [`BCRYPT_COST`](#bcrypt_cost)
 * Password Resets: [`APP_PASSWORD_RESET_URL`](#app_password_reset_url) • [`PASSWORD_RESET_TOKEN_TTL`](#password_reset_token_ttl) • [`APP_PASSWORD_CHANGED_URL`](#app_password_changed_url)
@@ -85,6 +85,7 @@ This value is commonly a 64-byte string, and can be generated with [`SecureRando
 | Default | true |
 
 May be set to a falsy value to disable the signup endpoint. If signup is disabled, all users must be created via the private [Import Account endpoint](api.md#import-account).
+
 
 ## Databases
 
@@ -189,6 +190,7 @@ This setting controls how frequently a refresh token must be used to keep a sess
 
 This setting controls cookie expiration behavior for refresh tokens.  The cookie will be written without any expiration / max age and treated by browsers as a session cookie by default.  If set to true, the cookie will be written as a persistent cookie with explicit expiration based on [`REFRESH_TOKEN_TTL`](#refresh_token_ttl).
 
+
 ### `SESSION_KEY_SALT`
 
 |           |    |
@@ -272,7 +274,7 @@ Additional credentialing data can be passed to the apple provider as key-value p
 `APPLE_OAUTH_CREDENTIALS=appID:appSecret:key1=val1:key2=val2`
 
 Note that the client secret for apple is **NOT** a static value as for other providers.  The secret sent is a JWT constructed using the additional data keyID, teamID and expirySeconds included with credentials.  
-The configured client secret is a private key used to sign the JWT.  This should be configured with a hex encoded representation of the full PEM block of a private key obtained at <https://developer.apple.com>.
+The configured client secret is a private key used to sign the JWT.  This should be configured with a hex encoded representation of the full PEM block of a private key obtained at https://developer.apple.com.
 
 ### `FACEBOOK_OAUTH_CREDENTIALS`
 
@@ -282,7 +284,7 @@ The configured client secret is a private key used to sign the JWT.  This should
 | Value     | AppID:AppSecret |
 | Default   | nil             |
 
-Create a Facebook app at <https://developers.facebook.com> and enable the Facebook Login product. In the Quickstart, enter [AuthN's OAuth Return](api.md#oauth-return) as the Site URL. Then switch over to Settings and find the App ID and Secret. Join those together with a `:` and provide them to AuthN as a single variable.
+Create a Facebook app at https://developers.facebook.com and enable the Facebook Login product. In the Quickstart, enter [AuthN's OAuth Return](api.md#oauth-return) as the Site URL. Then switch over to Settings and find the App ID and Secret. Join those together with a `:` and provide them to AuthN as a single variable.
 
 ### `TWITTER_OAUTH_CREDENTIALS`
 
@@ -304,7 +306,7 @@ Log in and see your apps in the [X developer portal](https://developer.x.com/en/
 | Value     | ClientID:ClientSecret |
 | Default   | nil                   |
 
-Sign up for GitHub OAuth 2.0 credentials with the instructions here: <https://developer.github.com/apps/building-oauth-apps>. Your client's ID and secret must be joined together with a `:` and provided to AuthN as a single variable.
+Sign up for GitHub OAuth 2.0 credentials with the instructions here: https://developer.github.com/apps/building-oauth-apps. Your client's ID and secret must be joined together with a `:` and provided to AuthN as a single variable.
 
 ### `GOOGLE_OAUTH_CREDENTIALS`
 
@@ -314,7 +316,7 @@ Sign up for GitHub OAuth 2.0 credentials with the instructions here: <https://de
 | Value     | ClientID:ClientSecret |
 | Default   | nil                   |
 
-Sign up for Google OAuth 2.0 credentials with the instructions here: <https://developers.google.com/identity/protocols/OpenIDConnect>. Your client's ID and secret must be joined together with a `:` and provided to AuthN as a single variable.
+Sign up for Google OAuth 2.0 credentials with the instructions here: https://developers.google.com/identity/protocols/OpenIDConnect. Your client's ID and secret must be joined together with a `:` and provided to AuthN as a single variable.
 
 ### `DISCORD_OAUTH_CREDENTIALS`
 
@@ -324,7 +326,7 @@ Sign up for Google OAuth 2.0 credentials with the instructions here: <https://de
 | Value     | ClientID:ClientSecret |
 | Default   | nil                   |
 
-Sign up for Discord OAuth 2.0 credentials with the instructions here: <https://discordapp.com/developers/docs/topics/oauth2>. Your client's ID and secret must be joined together with a `:` and provided to AuthN as a single variable.
+Sign up for Discord OAuth 2.0 credentials with the instructions here: https://discordapp.com/developers/docs/topics/oauth2. Your client's ID and secret must be joined together with a `:` and provided to AuthN as a single variable.
 
 ### `MICROSOFT_OAUTH_CREDENTIALS`
 
@@ -334,7 +336,7 @@ Sign up for Discord OAuth 2.0 credentials with the instructions here: <https://d
 | Value     | ClientID:ClientSecret |
 | Default   | nil                   |
 
-Sign up for Microsoft OAuth 2.0 credentials with the instructions here: <https://docs.microsoft.com/fr-fr/graph/auth/>. Your client's ID and secret must be joined together with a `:` and provided to AuthN as a single variable.
+Sign up for Microsoft OAuth 2.0 credentials with the instructions here: https://docs.microsoft.com/fr-fr/graph/auth/. Your client's ID and secret must be joined together with a `:` and provided to AuthN as a single variable.
 
 ## Username Policy
 
